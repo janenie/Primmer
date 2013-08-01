@@ -17,8 +17,14 @@ Folder::Folder(const Folder &m) {
 // }
 
 Folder& Folder::operator= (const Folder &m) {
-  if (&m != this)
-    Folder(m);
+  if (&m != this) {
+    for (std::set<Message*>::const_iterator it = 
+         (m.messages).begin();it != 
+         (m.messages).end(); it++) {
+     (this-> messages).insert(*it);
+    }
+
+  }
   return *this;
 }
 

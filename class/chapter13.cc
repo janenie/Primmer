@@ -39,13 +39,19 @@ NoName::NoName(const NoName& cops) {
   //*pstring = cops.getPstring();
   i = cops.getI();
   d = cops.getD();
+  //another method
+  //(*this) = cops;
 }
 
 NoName& NoName::operator= (const NoName& cops) {
   //must check for it
   //if not, shadow parameter throw
-  if (&cops != this)
-    NoName(cops);
+  if (&cops != this) {
+    std::string to_copy = cops.getPstring();
+    this->pstring = new std::string(to_copy);
+    this->i = cops.getI();
+    this->d = cops.getD();
+  }
   return *this;
 }
 
@@ -54,7 +60,10 @@ int main() {
   NoName to_copy(&a, 1, 1.2);
   NoName aim(to_copy);
   NoName aim2 = aim;
+  NoName aim3;
+  aim3 = aim;
   std::cout << "Pstring through copy is " << aim.getPstring() << std::endl;
   std::cout << "Pstring through aim2 is " << aim2.getPstring() << std::endl;
+  std::cout << "Pstring through aim3 is " << aim3.getPstring() << std::endl;
   return 0;
 }

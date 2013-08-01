@@ -6,8 +6,11 @@ Message::Message (const Message& m):
 }
 
 Message& Message::operator= (const Message& m) {
-  if (&m != this)
-    Message(m);
+  if (&m != this){
+    this->contents = m.contents;
+    this->folders = m.folders;
+    put_Msg_in_Folders(folders);
+  }
   return *this;
 }
 
