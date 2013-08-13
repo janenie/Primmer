@@ -108,6 +108,13 @@ void Queue<T>::copy_elems(const Queue &orig) {
   }
 }
 
+template <typename T>
+Queue<T>& Queue<T>::operator= (const Queue &t) {
+  while (!empty())
+    pop();
+  copy_elems(t);
+  return *this;
+}
 int main() {
   //using a function template
   cout << compare(1, 10) << endl;
