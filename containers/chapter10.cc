@@ -53,6 +53,18 @@ int main() {
     it != res.end(); it++) {
     cout << it->first <<" " << it->second << endl;
   }
+  //add map find function usage
+  map<char, int> mymap;
+  mymap['a'] = 50;
+  mymap['b'] = 100;
+  mymap['c'] = 150;
+  mymap['d'] = 200;
+  
+  map<char, int>::iterator it;
+  it = mymap.find('b');
+  mymap.erase(it);
+  
+  cout << "a=>" << mymap.find('a')->second << endl;
   
   return 0;
 }
