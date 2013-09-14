@@ -87,7 +87,17 @@ bool palindromes(string a) {
   
 }
 
+//better conversion--no need to copy string each time
+bool checkPalindromes(string a, int first, int last) {
+  if (first >= last)
+    return true;
+  else 
+    return (a[first] == a[last] &&
+              checkPalindromes(a, first+1, last-1));
+}
+
 int main() {
+  //test the printHistogram for right or wrong
   int arr[11] = {0, 0, 0, 0, 1, 1, 0, 2, 5, 2, 1};
   printHistogram(arr, 11);
   
@@ -95,10 +105,14 @@ int main() {
   cout << "Please input a word"<< endl;
   cin >> aim;
   cout << "the reverse is " << reverseString(aim) << endl;
-  
+  //test the prime version
   cout << "Please input a sentance" << endl;
   cin >> aim;
   if (palindromes(aim))
+    cout << "it is a palindrome" << endl;
+  else cout << "it is not a palindrome" << endl;
+  //test the better version
+  if (checkPalindromes(aim, 0, aim.length()-1))
     cout << "it is a palindrome" << endl;
   else cout << "it is not a palindrome" << endl;
   
